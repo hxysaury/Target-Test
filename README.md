@@ -27,7 +27,7 @@
 - :seedling:[DC-9](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/DC-9.md)
 
 - :seedling:[Deathnote 死亡笔记](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/Deathnote.md)
-- :seedling:[Hackademic.RTB1]([Hackademic.RTB1](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/Hackademic.RTB1.md))
+- :seedling:[Hackademic.RTB1](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/Hackademic.RTB1.md)
 - :seedling:[HarryPotter: Fawkes](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/HarryPotter-Fawkes.md)
 - :seedling:[HarryPotter-Nagini](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/HarryPotter-2-Nagini.md)
 - :seedling:[HarryPotter-Aragog-1.0.2](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/HarryPotter-Aragog-1.0.2.md)
