@@ -43,7 +43,7 @@
 - :octopus:[ica1](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/ica1.md)
 - :octopus:[mhz_cxf: c1f](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/mhz_c1f.md)
 - :octopus:[Dirty Cow 脏牛](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/%E8%84%8F%E7%89%9Blampiao.md)
-- :octopus:
+- :octopus:[Prime1](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/PRIME1.md)
 - :octopus:
 
   
