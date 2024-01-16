@@ -44,6 +44,6 @@
 - :octopus:[mhz_cxf: c1f](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/mhz_c1f.md)
 - :octopus:[Dirty Cow 脏牛](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/%E8%84%8F%E7%89%9Blampiao.md)
 - :octopus:[Prime1](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/PRIME1.md)
-- :octopus:
+- :octopus:[Tomato-日志包含](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/Tomato--%E6%97%A5%E5%BF%97%E5%8C%85%E5%90%AB.md)
 
   
