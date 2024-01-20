@@ -18,7 +18,7 @@
 | :octopus:[Hackademic.RTB1](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/Hackademic.RTB1.md) | :octopus:[HarryPotter: Fawkes](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/HarryPotter-Fawkes.md) |
 | :octopus:[HarryPotter-Nagini](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/HarryPotter-2-Nagini.md) | :octopus:[HarryPotter-Aragog-1.0.2](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/HarryPotter-Aragog-1.0.2.md) |
 | :octopus:[Infosec_Warrior1](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/Infosec_Warrior1.md) | :octopus:[JANGOW 1.0.1](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/JANGOW%201.0.1.md) |
-| :octopus:[JIS-CTF-VulnUpload-CTF01](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/JIS-CTF-VulnUpload-CTF01.md) | :octopus:[Jarbas](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/md) |
+| :octopus:[JIS-CTF-VulnUpload-CTF01](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/JIS-CTF-VulnUpload-CTF01.md) | :octopus:[Jarbas](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/Jarbas.md) |
 | :octopus:[Raven:2](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/Raven%202.md) | :octopus:[SickOS1.1](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/SickOS1.1.md) |
 | :no_bell:[SickOs1.2](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/SickOs1.2.md) | :octopus:[THM-ContainMe-v4](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/THM-ContainMe-v4.md) |
 | :octopus:[The Planets: Earth(行星-地球)](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/The%20Planets%20Earth.md) | :octopus:[W1R3S  1.0.1](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/W1R3S%201.0.1.md) |
