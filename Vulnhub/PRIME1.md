@@ -217,7 +217,7 @@ sudo wpscan --url http://10.9.75.10/wordpress/ -e u
 
 ![image-20240116203055769](imgs/image-20240116203055769.png)
 
-### 权限提升
+### 内核提权
 
 ```bash
 sudo -l
@@ -277,3 +277,74 @@ cd  /root
 
 
 ![image-20240116204323709](imgs/image-20240116204323709.png)
+
+### OpenSSL解密提权
+
+拿到普通的Shell
+
+![image-20240120155443904](imgs/image-20240120155443904.png)
+
+进行另一种提权方法
+
+![image-20240120155806816](imgs/image-20240120155806816.png)
+
+`/home/saket/enc`   执行`enc`这个文件的时候可以用超级用户来执行，而且不需要密码
+
+![image-20240120160354567](imgs/image-20240120160354567.png)
+
+但是在执行的时候发现需要密码，这个密码现在并不知道，不是前面获取的那个后台登录密码
+
+`enc`这几个字，看起来跟加密有关
+
+使用`strings`命令和`file`命令都被拒绝
+
+![image-20240120161407550](imgs/image-20240120161407550.png)
+
+使用`find`命令找找有没有备份文件之类的
+
+```bash
+find / -name "*backup*" 2>/dev/null
+```
+
+![image-20240120161801705](imgs/image-20240120161801705.png)
+
+最后在`/opt/backup/server_database/backup_pass`里发现了`enc`的字样
+
+![image-20240120161916333](imgs/image-20240120161916333.png)
+
+密码：`backup_password`
+
+```bash
+sudo  ./enc
+```
+
+
+
+![image-20240120162357209](imgs/image-20240120162357209.png)
+
+执行后，只输出了一个`good`，用户还是`www-data`，那执行之后它干了什么呢？
+
+![image-20240120162506866](imgs/image-20240120162506866.png)
+
+发现在`/home/saket/`多了两个文件
+
+![image-20240120162558479](imgs/image-20240120162558479.png)
+
+`enc.txt`看起来像一串加密
+
+`key.txt`提示说对`ippsec`做MD5加密
+
+```bash
+echo -n "ippsec" | md5sum | awk -F' ' '{print $1}' 
+```
+
+> 366a74cb3c959de17d61db30591c39d1
+
+![image-20240120163513445](imgs/image-20240120163513445.png)
+
+未完~~~~~~~~~~~~~~~~~~~~~~~~~
+
+可参考:
+
+- [bilibili视频讲解](https://www.bilibili.com/video/BV1wD4y1C7Da/?spm_id_from=333.788&vd_source=7cb54e8da5c4e85dd5ca576825dc1c86)
+- https://www.freebuf.com/news/369140.html
