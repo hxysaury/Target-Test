@@ -21,6 +21,7 @@
 | :octopus:[lampsecurity-ctf4-（sqlmap注入）](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/LAMPSECURITY%20CTF4-sql%E6%B3%A8%E5%85%A5-sqlmap.md) | :octopus:[lampsecurity-ctf5-nannocms](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/LampSecurityctf5.md) | :octopus:[PWNOS 2.0 (PRE-RELEASE)](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/PWNOS%202.0%20(PRE-RELEASE).md) |
 | :octopus:[West-Wild-v1.1-（利用smb服务（smbmap-smclient））](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/West-Wild-v1.1.md) | :octopus:[pWnOS:1.0（Webmin文件泄露利用）](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/PwNos1.0.md) | :octopus:[Holynix:v1（SQL注入万能用户名&post型文件包含）](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/Holynixv1.md) |
 | :octopus:[Tr0ll-1.0-（ftp-web-计划任务提权）](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/Tr0ll.md) | :no_bell:[Brainpan-（涉及pwn）](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/Brainpan.md) | :octopus:[BilluBox-（sql-inject，LFI）](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/Billubox.md) |
+| :octopus:[Kioptrix1.2 -（CMS漏洞利用，mysql查询，ht编辑器修改sudoers文件提权）](https://github.com/hxysaury/Target-Test/blob/main/Vulnhub/Kioptrix1.2.md) |                                                              |                                                              |
 
 ### :vertical_traffic_light:HackMyVM 
 
