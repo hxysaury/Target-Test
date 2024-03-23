@@ -1,4 +1,11 @@
 > 关注公众号“知攻善防实验室”，后台回复“靶机web1”
+>
+> ---
+>
+> 或者通过以下链接下载
+>
+> 链接：https://pan.baidu.com/s/1ZHlrpQ6VciS31lgRME6sPQ 
+> 提取码：m0ow 
 
 ## 挑战内容
 

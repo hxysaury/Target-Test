@@ -1,4 +1,11 @@
 > 关注 [琴音安全](javascript:void(0);)公众号，后台回复**应急靶场**获取下载链接
+>
+> ---
+>
+> 或者通过以下链接下载
+>
+> 链接：https://pan.baidu.com/s/1sn5BCSJbH2zWm2Cj40-znQ 
+> 提取码：qv0i 
 
 ## 挑战内容
 
