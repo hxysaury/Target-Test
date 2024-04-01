@@ -89,6 +89,8 @@ grep "Accepted " /var/log/secure | awk '{print $1,$2,$3,$9,$11}'
 
 ![image-20240331231010724](imgs/image-20240331231010724.png)
 
+
+
 #### 检查命令文件是否被替换
 
 > rpm -Vf /usr/bin/*
@@ -99,6 +101,10 @@ grep "Accepted " /var/log/secure | awk '{print $1,$2,$3,$9,$11}'
 > \#T 代表文件时间发生了变化
 
 ![image-20240331231357358](imgs/image-20240331231357358.png)
+
+看到除了`rc.local`文件被动过，而且`redis`的配置文件`/etc/redis.conf`被修改过，打开看看
+
+
 
 #### redis配置文件
 
@@ -136,7 +142,7 @@ cat /var/log/redis/redis.log | grep Accept
 
 ![image-20240331225439618](imgs/image-20240331225439618.png)
 
-找到IP地址192.168.75.129
+发现IP地址192.168.75.129
 
 ### 提交
 
